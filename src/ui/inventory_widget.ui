@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>InventoryWidget</class>
+ <widget class="QWidget" name="InventoryWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1180</width>
+    <height>760</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>980</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>库存管理</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+    background-color: black;
+    color: white;
+}
+QGroupBox {
+    font-weight: bold;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    margin-top: 12px;
+    padding-top: 8px;
+    background-color: #1a1a1a;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 12px;
+    padding: 0 6px;
+    color: white;
+}
+QPushButton {
+    min-height: 32px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: #667eea;
+    color: white;
+    font-weight: 500;
+}
+QPushButton:hover {
+    background-color: #5a6fd6;
+}
+QPushButton:pressed {
+    background-color: #4e63c4;
+}
+QPushButton#closeButton {
+    background-color: #666666;
+}
+QPushButton#closeButton:hover {
+    background-color: #555555;
+}
+QPushButton#confirmButton {
+    background-color: #10b981;
+}
+QPushButton#confirmButton:hover {
+    background-color: #059669;
+}
+QLineEdit, QComboBox, QSpinBox, QPlainTextEdit {
+    min-height: 30px;
+    border: 1px solid #444444;
+    border-radius: 6px;
+    padding: 0 8px;
+    background-color: #2a2a2a;
+    color: white;
+}
+QLineEdit:focus, QComboBox:focus, QSpinBox:focus, QPlainTextEdit:focus {
+    border-color: #667eea;
+    outline: none;
+}
+QComboBox {
+    padding-right: 24px;
+}
+QComboBox QAbstractItemView {
+    background-color: #2a2a2a;
+    color: white;
+    border: 1px solid #444444;
+}
+QSpinBox::up-button, QSpinBox::down-button {
+    background-color: #333333;
+    border: none;
+}
+QCheckBox {
+    spacing: 6px;
+    color: white;
+}
+QLabel {
+    color: white;
+}
+#titleLabel {
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+}
+#lowStockValueLabel {
+    color: #ef4444;
+    font-weight: bold;
+    font-size: 18px;
+}
+#totalProductsValueLabel, #totalStockValueLabel, #outOfStockValueLabel {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+#statusTipLabel {
+    color: #999999;
+}
+#selectedProductLabel {
+    font-weight: 500;
+    color: white;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="leftMargin"><number>18</number></property>
+   <property name="topMargin"><number>16</number></property>
+   <property name="rightMargin"><number>18</number></property>
+   <property name="bottomMargin"><number>16</number></property>
+   <property name="spacing"><number>12</number></property>
+   <item>
+    <layout class="QHBoxLayout" name="titleLayout">
+     <item>
+      <widget class="QLabel" name="titleLabel">
+       <property name="text"><string>库存管理</string></property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="titleSpacer">
+       <property name="orientation"><enum>Qt::Orientation::Horizontal</enum></property>
+       <property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="statusTipLabel">
+       <property name="text"><string>请选择商品后进行入库、报损或盘点调整</string></property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="searchGroupBox">
+     <property name="title"><string>库存查询</string></property>
+     <layout class="QGridLayout" name="searchLayout">
+      <property name="horizontalSpacing"><number>10</number></property>
+      <property name="verticalSpacing"><number>8</number></property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="keywordLabel">
+        <property name="text"><string>商品编号/名称：</string></property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="keywordEdit">
+        <property name="placeholderText"><string>请输入商品编号、条形码或名称</string></property>
+        <property name="clearButtonEnabled"><bool>true</bool></property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="statusLabel">
+        <property name="text"><string>商品状态：</string></property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QComboBox" name="statusComboBox">
+        <item><property name="text"><string>全部</string></property></item>
+        <item><property name="text"><string>已上架</string></property></item>
+        <item><property name="text"><string>已下架</string></property></item>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QCheckBox" name="lowStockCheckBox">
+        <property name="text"><string>仅显示低库存</string></property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="QPushButton" name="searchButton">
+        <property name="text"><string>查询</string></property>
+        <property name="default"><bool>true</bool></property>
+       </widget>
+      </item>
+      <item row="0" column="6">
+       <widget class="QPushButton" name="resetButton">
+        <property name="text"><string>重置</string></property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="summaryLayout">
+     <item>
+      <widget class="QGroupBox" name="totalProductsGroupBox">
+       <property name="title"><string>商品种类</string></property>
+       <layout class="QVBoxLayout" name="totalProductsLayout">
+        <item><widget class="QLabel" name="totalProductsValueLabel"><property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property><property name="text"><string>0</string></property></widget></item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="totalStockGroupBox">
+       <property name="title"><string>库存总件数</string></property>
+       <layout class="QVBoxLayout" name="totalStockLayout">
+        <item><widget class="QLabel" name="totalStockValueLabel"><property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property><property name="text"><string>0</string></property></widget></item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="lowStockGroupBox">
+       <property name="title"><string>低库存商品</string></property>
+       <layout class="QVBoxLayout" name="lowStockLayout">
+        <item><widget class="QLabel" name="lowStockValueLabel"><property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property><property name="text"><string>0</string></property></widget></item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="outOfStockGroupBox">
+       <property name="title"><string>缺货商品</string></property>
+       <layout class="QVBoxLayout" name="outOfStockLayout">
+        <item><widget class="QLabel" name="outOfStockValueLabel"><property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property><property name="text"><string>0</string></property></widget></item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="inventoryListGroupBox">
+     <property name="title"><string>库存列表</string></property>
+     <layout class="QVBoxLayout" name="inventoryListLayout">
+      <item>
+       <widget class="QTableWidget" name="inventoryTable">
+        <property name="alternatingRowColors"><bool>true</bool></property>
+        <property name="selectionMode"><enum>QAbstractItemView::SelectionMode::SingleSelection</enum></property>
+        <property name="selectionBehavior"><enum>QAbstractItemView::SelectionBehavior::SelectRows</enum></property>
+        <property name="editTriggers"><set>QAbstractItemView::EditTrigger::NoEditTriggers</set></property>
+        <property name="sortingEnabled"><bool>true</bool></property>
+        <property name="rowCount"><number>0</number></property>
+        <property name="columnCount"><number>10</number></property>
+        <attribute name="horizontalHeaderStretchLastSection"><bool>true</bool></attribute>
+        <column><property name="text"><string>商品编号</string></property></column>
+        <column><property name="text"><string>条形码</string></property></column>
+        <column><property name="text"><string>商品名称</string></property></column>
+        <column><property name="text"><string>商品分类</string></property></column>
+        <column><property name="text"><string>单位</string></property></column>
+        <column><property name="text"><string>单价（元）</string></property></column>
+        <column><property name="text"><string>当前库存</string></property></column>
+        <column><property name="text"><string>预警值</string></property></column>
+        <column><property name="text"><string>商品状态</string></property></column>
+        <column><property name="text"><string>库存状态</string></property></column>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="operationGroupBox">
+     <property name="title"><string>库存操作</string></property>
+     <layout class="QGridLayout" name="operationLayout">
+      <property name="horizontalSpacing"><number>10</number></property>
+      <property name="verticalSpacing"><number>8</number></property>
+      <item row="0" column="0" colspan="2">
+       <widget class="QLabel" name="selectedProductLabel">
+        <property name="text"><string>当前选择：未选择商品</string></property>
+       </widget>
+      </item>
+      <item row="1" column="0"><widget class="QLabel" name="operationTypeLabel"><property name="text"><string>操作类型：</string></property></widget></item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="operationTypeComboBox">
+        <item><property name="text"><string>商品入库</string></property></item>
+        <item><property name="text"><string>商品报损</string></property></item>
+        <item><property name="text"><string>盘点调整</string></property></item>
+       </widget>
+      </item>
+      <item row="1" column="2"><widget class="QLabel" name="quantityLabel"><property name="text"><string>变动数量：</string></property></widget></item>
+      <item row="1" column="3">
+       <widget class="QSpinBox" name="quantitySpinBox">
+        <property name="minimum"><number>1</number></property>
+        <property name="maximum"><number>99999</number></property>
+        <property name="value"><number>1</number></property>
+       </widget>
+      </item>
+      <item row="1" column="4"><widget class="QLabel" name="warningValueLabel"><property name="text"><string>库存预警值：</string></property></widget></item>
+      <item row="1" column="5">
+       <widget class="QSpinBox" name="warningValueSpinBox">
+        <property name="minimum"><number>0</number></property>
+        <property name="maximum"><number>99999</number></property>
+        <property name="value"><number>10</number></property>
+       </widget>
+      </item>
+      <item row="2" column="0"><widget class="QLabel" name="reasonLabel"><property name="text"><string>调整原因：</string></property></widget></item>
+      <item row="2" column="1" colspan="5">
+       <widget class="QPlainTextEdit" name="reasonEdit">
+        <property name="maximumSize"><size><width>16777215</width><height>72</height></size></property>
+        <property name="placeholderText"><string>请输入补货、报损或盘点调整的原因</string></property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="6">
+       <layout class="QHBoxLayout" name="operationButtonLayout">
+        <item><spacer name="operationButtonSpacer"><property name="orientation"><enum>Qt::Orientation::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+        <item><widget class="QPushButton" name="addProductButton"><property name="text"><string>新增商品</string></property></widget></item>
+        <item><widget class="QPushButton" name="setWarningButton"><property name="text"><string>设置预警值</string></property></widget></item>
+        <item><widget class="QPushButton" name="confirmButton"><property name="text"><string>确认库存操作</string></property></widget></item>
+        <item><widget class="QPushButton" name="refreshButton"><property name="text"><string>刷新数据</string></property></widget></item>
+        <item><widget class="QPushButton" name="closeButton"><property name="text"><string>关闭页面</string></property></widget></item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>keywordEdit</tabstop>
+  <tabstop>statusComboBox</tabstop>
+  <tabstop>lowStockCheckBox</tabstop>
+  <tabstop>searchButton</tabstop>
+  <tabstop>resetButton</tabstop>
+  <tabstop>inventoryTable</tabstop>
+  <tabstop>operationTypeComboBox</tabstop>
+  <tabstop>quantitySpinBox</tabstop>
+  <tabstop>warningValueSpinBox</tabstop>
+  <tabstop>reasonEdit</tabstop>
+  <tabstop>addProductButton</tabstop>
+  <tabstop>setWarningButton</tabstop>
+  <tabstop>confirmButton</tabstop>
+  <tabstop>refreshButton</tabstop>
+  <tabstop>closeButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>resetButton</sender>
+   <signal>clicked()</signal>
+   <receiver>keywordEdit</receiver>
+   <slot>clear()</slot>
+   <hints><hint type="sourcelabel"><x>975</x><y>165</y></hint><hint type="destinationlabel"><x>325</x><y>165</y></hint></hints>
+  </connection>
+  <connection>
+   <sender>resetButton</sender>
+   <signal>clicked()</signal>
+   <receiver>reasonEdit</receiver>
+   <slot>clear()</slot>
+   <hints><hint type="sourcelabel"><x>975</x><y>165</y></hint><hint type="destinationlabel"><x>475</x><y>650</y></hint></hints>
+  </connection>
+  <connection>
+   <sender>closeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>InventoryWidget</receiver>
+   <slot>close()</slot>
+   <hints><hint type="sourcelabel"><x>1090</x><y>715</y></hint><hint type="destinationlabel"><x>1175</x><y>25</y></hint></hints>
+  </connection>
+ </connections>
+</ui>

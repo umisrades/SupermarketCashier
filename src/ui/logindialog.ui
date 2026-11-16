@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LoginDialog</class>
+ <widget class="QDialog" name="LoginDialog">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>360</width><height>230</height></rect>
+  </property>
+  <property name="windowTitle"><string>系统登录</string></property>
+  <property name="windowFlags"><set>Qt::Dialog|Qt::WindowTitleHint|Qt::WindowSystemMenuHint</set></property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="leftMargin"><number>36</number></property>
+   <property name="topMargin"><number>24</number></property>
+   <property name="rightMargin"><number>36</number></property>
+   <property name="bottomMargin"><number>24</number></property>
+   <property name="spacing"><number>14</number></property>
+   <item>
+    <widget class="QLabel" name="titleLabel">
+     <property name="text"><string>超市收银系统</string></property>
+     <property name="styleSheet"><string notr="true">font-size: 20px; font-weight: bold; color: #333;</string></property>
+     <property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+     <property name="horizontalSpacing"><number>10</number></property>
+     <property name="verticalSpacing"><number>12</number></property>
+     <item row="0" column="0"><widget class="QLabel" name="usernameLabel"><property name="text"><string>用户名：</string></property></widget></item>
+     <item row="0" column="1"><widget class="QLineEdit" name="usernameEdit"><property name="placeholderText"><string>请输入用户名</string></property><property name="clearButtonEnabled"><bool>true</bool></property></widget></item>
+     <item row="1" column="0"><widget class="QLabel" name="passwordLabel"><property name="text"><string>密　码：</string></property></widget></item>
+     <item row="1" column="1"><widget class="QLineEdit" name="passwordEdit"><property name="placeholderText"><string>请输入密码</string></property><property name="echoMode"><enum>QLineEdit::EchoMode::Password</enum></property></widget></item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="buttonLayout">
+     <item><spacer name="buttonSpacer"><property name="orientation"><enum>Qt::Orientation::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+     <item><widget class="QPushButton" name="loginBtn"><property name="text"><string>登录</string></property><property name="default"><bool>true</bool></property></widget></item>
+     <item><widget class="QPushButton" name="cancelBtn"><property name="text"><string>取消</string></property></widget></item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="accountTipLabel">
+     <property name="text"><string>请使用已分配的管理员或收银员账号登录</string></property>
+     <property name="alignment"><set>Qt::AlignmentFlag::AlignCenter</set></property>
+     <property name="styleSheet"><string notr="true">color: #6b7280; font-size: 12px;</string></property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

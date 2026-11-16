@@ -1,0 +1,20 @@
+# Local build and IDE output
+/build/
+/out/
+/.vs/
+/.qtcreator/
+/cmake-build-*/
+/CMakeFiles/
+/CMakeCache.txt
+/CMakeUserPresets.json
+/cmake_install.cmake
+/CTestTestfile.cmake
+/Testing/
+*.pro.user
+*.user
+
+# Runtime database and SQLite sidecar files
+goods.db
+*.db-journal
+*.db-shm
+*.db-wal

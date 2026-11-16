@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CashierWindow</class>
+ <widget class="QMainWindow" name="CashierWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1176</width>
+    <height>726</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>超市收银台</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>31</x>
+      <y>62</y>
+      <width>511</width>
+      <height>571</height>
+     </rect>
+    </property>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderStretchLastSection">
+     <bool>false</bool>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>商品编号</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>商品名称</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>单价</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>数量</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>小计</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>32</x>
+      <y>30</y>
+      <width>511</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>商品条形码：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="priceInput">
+       <property name="placeholderText">
+        <string>请输入或扫描商品条形码</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="SearchandAdd">
+       <property name="text">
+        <string>搜索并加入</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>40</y>
+      <width>541</width>
+      <height>601</height>
+     </rect>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="widgetResizable">
+     <bool>false</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>539</width>
+       <height>599</height>
+      </rect>
+     </property>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>481</width>
+        <height>551</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>630</y>
+      <width>511</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>总计金额：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_totalMoney">
+         <property name="text">
+          <string>0.00 元</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QPushButton" name="deleteItem">
+         <property name="text">
+          <string>删除商品</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Hangup">
+         <property name="text">
+          <string>挂起</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="payButton">
+         <property name="text">
+          <string>付款</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1176</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuCashier">
+    <property name="title">
+     <string>收银</string>
+    </property>
+    <addaction name="actionInventoryManagement"/>
+    <addaction name="actionStatistics"/>
+    <addaction name="separator"/>
+    <addaction name="actionLogout"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <addaction name="menuCashier"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionInventoryManagement">
+   <property name="text">
+    <string>库存管理</string>
+   </property>
+  </action>
+  <action name="actionLogout">
+   <property name="text">
+    <string>退出登录</string>
+   </property>
+  </action>
+  <action name="actionStatistics">
+   <property name="text">
+    <string>销售统计</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>退出系统</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
